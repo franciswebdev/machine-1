@@ -20,6 +20,12 @@ const Home: NextPage = () => {
         </h1>
 
         <div className={styles.grid}>
+          <Link href="/redux">
+            <LinkBox className={styles.card}>
+              <h2>Redux</h2>
+              <p>State machine using Redux</p>
+            </LinkBox>
+          </Link>
           <Link href="/recoil">
             <LinkBox className={styles.card}>
               <h2>Recoil</h2>
