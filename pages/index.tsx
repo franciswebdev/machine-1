@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          This is Frodo&apos;s Test Machine
+          Frodo's Test Machine
         </h1>
 
         <div className={styles.grid}>
@@ -33,6 +33,9 @@ const Home: NextPage = () => {
             </LinkBox>
           </Link>
         </div>
+
+        <a href="https://frodo.hashnode.dev/">tech blog at hashnode</a>
+
       </main>
 
       <footer className={styles.footer}>
