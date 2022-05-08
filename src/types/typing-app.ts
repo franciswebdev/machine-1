@@ -1,4 +1,6 @@
 
+// Let's expect a novel or essay
 export type PracticeItem = {
-  paragraph: string;
+  title?: string;
+  paragraphs: string[];
 }

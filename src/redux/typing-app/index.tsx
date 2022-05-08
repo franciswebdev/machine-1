@@ -16,7 +16,7 @@ const TypingHome = () => {
 
   return (
     <Container>
-      {data?.paragraph}
+      {data?.paragraphs}
     </Container>
   );
 }
