@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Frodo's Test Machine
+          Frodolicious Test Machine
         </h1>
 
         <div className={styles.grid}>
