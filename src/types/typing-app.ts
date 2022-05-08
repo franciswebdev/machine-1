@@ -1,6 +1,11 @@
 
 // Let's expect a novel or essay
-export type PracticeItem = {
-  title?: string;
-  paragraphs: string[];
+export type Article = {
+  headline?: string;
+  contents: Content[];
+}
+
+export type Content = {
+  html?: string;
+  text?: string;
 }

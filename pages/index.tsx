@@ -10,7 +10,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>Abandon all hope all ye who enter here</title>
-        <meta name="description" content="Frodolicious Page" />
+        <meta name="description" content="Frodolicious Page`" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
