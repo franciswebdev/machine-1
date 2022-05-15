@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import { Container } from "@mui/material";
 import { Article } from "@/components/types/typing-app";
 import { gql, GraphQLClient } from 'graphql-request';
@@ -14,6 +14,7 @@ const graphcms = new GraphQLClient(
 const TypingHome = () => {
 
   const [article, setArticle] = useState<Article>();
+  const articleRef = useRef<string>();
 
   const QUERY = gql`
     {
@@ -30,14 +31,29 @@ const TypingHome = () => {
     (async () => {
       const res = await graphcms.request(QUERY);
       setArticle(res.article);
+
+      if (articleRef.current !== res.article.id) {
+        articleRef.current = res.article.id;
+      }
     })();
+  }, []);
+
+  useEffect(() => {
+    const keyup = (e: KeyboardEvent) => {
+      console.log(e);
+    }
+    document.addEventListener('keyup', keyup);
+
+    return () => {
+      document.removeEventListener('keyup', keyup);
+    }
   }, []);
 
   return (
     <Container>
       {article?.headline}
       {article?.contents.map((a, i) => (
-        <div id={`index-${article.id}-${i}`} dangerouslySetInnerHTML={{ __html: a.html || '' }} />
+        <div id={`index-${i}`} dangerouslySetInnerHTML={{ __html: a.html || '' }} />
       ))}
     </Container>
   );
