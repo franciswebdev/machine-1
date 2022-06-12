@@ -5,6 +5,7 @@ import { GraphQLClient } from 'graphql-request';
 import { ARTICLE_QUERY } from "@/components/gql/article.gql";
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
+import hash from 'object-hash';
 
 const graphcms = new GraphQLClient(
   'https://api-ap-southeast-2.graphcms.com/v2/cl29v665s1jqg01yz63gsdva6/master', {
@@ -28,8 +29,9 @@ const TypingHome = () => {
         articleRef.current = res.article.id;
       }
 
-
-    })();
+    })().catch(e => {
+      console.log('failed to query graphcms', e);
+    });
   }, []);
 
   useEffect(() => {
@@ -39,13 +41,14 @@ const TypingHome = () => {
     document.addEventListener('keyup', keyup);
 
     return () => {
+      console.log('removing key listeners');
       document.removeEventListener('keyup', keyup);
     }
-  }, []);
+  }, [articleRef]);
 
   useEffect(() => {
     console.log('---', article?.contents);
-  }, [ article ])
+  }, [article]);
 
   return (
     <Container>
@@ -56,7 +59,7 @@ const TypingHome = () => {
 
         {article?.contents.map((a, i) => (
           <>
-            <Box px={2} py={1} my={1} bgcolor="wheat" id={`index-${i}`}
+            <Box key={`index-${hash(a.html)}`} px={2} py={1} my={1} bgcolor="wheat" id={`index-${i}`}
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(a.html || '') }}
             />
             <span>{a.text}</span>
