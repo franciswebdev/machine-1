@@ -1,3 +1,4 @@
+import { Box } from '@mui/material'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -34,7 +35,10 @@ const Home: NextPage = () => {
           </Link>
         </div>
 
-        <a href="https://frodo.hashnode.dev/">tech blog at hashnode</a>
+        <Box display="inline-flex" sx={{ '> *': { mx: 1 }}}>
+          <a href="https://frodo.hashnode.dev/">tech blog at hashnode</a>
+          <a href="https://twitter.com/thatfrontend">twitter@thatfrontend </a>
+        </Box>
 
       </main>
 
