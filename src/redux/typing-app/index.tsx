@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { Article } from "@/components/types/typing-app";
 import { GraphQLClient } from 'graphql-request';
@@ -27,11 +27,23 @@ const TypingHome = () => {
         articleRef.current = res.article.id;
       }
 
+    // mock data if we cannot reach graphcms
     })().catch(e => {
       console.log('failed to query graphcms', e);
+
+      setArticle({
+        id: 'mock-id',
+        headline: 'mock headline',
+        contents: [
+          {
+            html: '<p>this is some text</p>',
+            text: 'this is some text'
+          }
+        ]
+      })
     });
   }, []);
- 
+
   // where we capture the key strokes
   useEffect(() => {
     const keyup = (e: KeyboardEvent) => {
@@ -45,9 +57,18 @@ const TypingHome = () => {
     }
   }, [articleRef]);
 
+  const contents = useMemo(() => {
+    console.log('-- memo', article?.contents)
+    return article?.contents;
+  }, [article]);
+
   useEffect(() => {
     console.log('---', article?.contents);
-  }, [article]);
+  }, [article?.contents]);
+
+  useEffect(() => {
+    console.log('-- memoized contents', contents)
+  }, [contents]);
 
   return (
     <Container>
