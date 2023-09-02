@@ -67,7 +67,7 @@ const TypingHome = () => {
   }, [article?.contents]);
 
   useEffect(() => {
-    console.log('-- memoized contents', contents)
+    console.log('++ memoized contents', contents)
   }, [contents]);
 
   return (

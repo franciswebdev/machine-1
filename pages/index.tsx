@@ -43,7 +43,7 @@ const Home: NextPage = () => {
           >
             go {paletteMode === "light" ? "dark" : "light"}
           </Button>
-          <h1 className={styles.title}>Frodolicious Test Machine</h1>
+          <h1 className={styles.title}>Machine-1</h1>
 
           <div className={styles.grid}>
             <Link href="/redux/typing-app">
