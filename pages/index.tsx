@@ -61,7 +61,7 @@ const Home: NextPage = () => {
           </div>
 
           <Box display="inline-flex" sx={{ "> *": { mx: 1 } }}>
-            <a href="https://frodo.hashnode.dev/">tech blog at hashnode</a>
+            <a href="https://frodo.hashnode.dev/">Tech blog at hashnode</a>
             <a href="https://twitter.com/thatfrontend">twitter@thatfrontend </a>
           </Box>
         </main>
